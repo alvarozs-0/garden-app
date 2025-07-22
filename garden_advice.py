@@ -1,6 +1,7 @@
 # garden_advice.py
 """Garden Advice Program"""
 
+# Dictionary containing advice based on season and plant type
 advice = {
     "season": {
         "summer": "Water your plants regularly and provide some shade.",
@@ -17,31 +18,50 @@ advice = {
 }
 
 
-season = input("Enter the season: ").lower()
+def get_season_advice(season):
+    """
+    Provides gardening advice based on the season.
+    Args:
+        season (str): The season entered by the user.
+    """
+    if season in advice["season"]:
+        print("Advice for", season, "is:")
+        print(advice["season"][season])
+
+        print("Recommended plants for", season, "are:")
+        for plant in advice["plant_type"]:
+            print("-", plant)
+    else:
+        print("Invalid season.")
 
 
-if season in advice["season"]:
-    print("Advice for", season, "is:")
-    print(advice["season"][season])
-
-    print("Recommended plants for", season, "are:")
-    for plant in advice["plant_type"]:
-        print("-", plant)
-else:
-    print("Invalid season.")
-
-
-print()
-
-plant_type = input("Enter the plant type: ").lower()
+def get_plant_type_advice(plant_type):
+    """
+    Provides gardening advice based on the plant type.
+    Args:
+        plant_type (str): The plant type entered by the user.
+    """
+    if plant_type in advice["plant_type"]:
+        print(advice["plant_type"][plant_type])
+    else:
+        print("Invalid plant type.")
 
 
-if plant_type in advice["plant_type"]:
-    print(advice["plant_type"][plant_type])
-else:
-    print("Invalid plant type.")
+def main():
+    """
+    Main function to run the Garden Advice Program.
+    """
+    # Get user input for season and provide advice
+    season = input("Enter the season: ").lower()
+    get_season_advice(season)
+
+    print()
+
+    # Get user input for plant type and provide advice
+    plant_type = input("Enter the plant type: ").lower()
+    get_plant_type_advice(plant_type)
 
 
-# TODO: Examples of possible features to add:
-# - Add detailed comments explaining each block of code.
-# - Refactor the code into functions for better readability and modularity.
+# Entry point of the program
+if __name__ == "__main__":
+    main()

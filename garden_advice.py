@@ -1,31 +1,47 @@
-# Hardcoded values for the season and plant type
-season = "summer"  # TODO: Replace with input() to allow user interaction.
-plant_type = "flower"  # TODO: Replace with input() to allow user interaction.
+# garden_advice.py
+"""Garden Advice Program"""
 
-# Variable to hold gardening advice
-advice = ""
+advice = {
+    "season": {
+        "summer": "Water your plants regularly and provide some shade.",
+        "winter": "Protect your plants from frost with covers.",
+        "spring": "Time to plant new seeds and prepare the soil.",
+        "autumn": "Harvest your crops and prepare for the colder months."
+    },
+    "plant_type": {
+        "flower": "Use fertiliser to encourage blooms.",
+        "vegetable": "Keep an eye out for pests.",
+        "herb": "Prune regularly to promote growth.",
+        "tree": "Ensure proper watering and check for diseases."
+    }
+}
 
-# Determine advice based on the season
-if season == "summer":
-    advice += "Water your plants regularly and provide some shade.\n"
-elif season == "winter":
-    advice += "Protect your plants from frost with covers.\n"
+
+season = input("Enter the season: ").lower()
+
+
+if season in advice["season"]:
+    print("Advice for", season, "is:")
+    print(advice["season"][season])
+
+    print("Recommended plants for", season, "are:")
+    for plant in advice["plant_type"]:
+        print("-", plant)
 else:
-    advice += "No advice for this season.\n"
+    print("Invalid season.")
 
-# Determine advice based on the plant type
-if plant_type == "flower":
-    advice += "Use fertiliser to encourage blooms."
-elif plant_type == "vegetable":
-    advice += "Keep an eye out for pests!"
+
+print()
+
+plant_type = input("Enter the plant type: ").lower()
+
+
+if plant_type in advice["plant_type"]:
+    print(advice["plant_type"][plant_type])
 else:
-    advice += "No advice for this type of plant."
+    print("Invalid plant type.")
 
-# Print the generated advice
-print(advice)
 
 # TODO: Examples of possible features to add:
 # - Add detailed comments explaining each block of code.
 # - Refactor the code into functions for better readability and modularity.
-# - Store advice in a dictionary for multiple plants and seasons.
-# - Recommend plants based on the entered season.
